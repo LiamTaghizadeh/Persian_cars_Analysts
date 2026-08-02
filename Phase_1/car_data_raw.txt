@@ -1,0 +1,206 @@
+Year,Shamsi_Year,Manufacturer,Model,Fuel_Type,Engine_Type,Power_hp,Torque_Nm,Fuel_Consumption_L100km,Acceleration_0_100_s,Top_Speed_kmh,CO2_Emission_g_km,Emission_Standard,Score,Key_Options,Image_URL
+2001,1380,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2001,1380,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2001,1380,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 2,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2001,1380,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2002,1381,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2002,1381,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2002,1381,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 2,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2002,1381,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2003,1382,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2003,1382,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2003,1382,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 2,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2003,1382,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2004,1383,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2004,1383,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2004,1383,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 2,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2004,1383,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2005,1384,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2005,1384,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2005,1384,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2005,1384,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2005,1384,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2006,1385,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2006,1385,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2006,1385,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2006,1385,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2007,1386,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2007,1386,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2007,1386,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2007,1386,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2007,1386,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2008,1387,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2008,1387,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2008,1387,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2008,1387,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2008,1387,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2008,1387,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2009,1388,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2009,1388,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2009,1388,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2009,1388,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2009,1388,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2009,1388,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2009,1388,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2010,1389,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2010,1389,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2010,1389,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2010,1389,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2010,1389,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2010,1389,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2010,1389,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2011,1390,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2011,1390,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2011,1390,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2011,1390,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2011,1390,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2011,1390,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2011,1390,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2011,1390,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2012,1391,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2012,1391,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2012,1391,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2012,1391,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2012,1391,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2012,1391,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2012,1391,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2012,1391,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2013,1392,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2013,1392,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2013,1392,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2013,1392,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2013,1392,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2013,1392,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2013,1392,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2013,1392,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2014,1393,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2014,1393,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2014,1393,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2014,1393,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2014,1393,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2014,1393,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2014,1393,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2014,1393,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2014,1393,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2015,1394,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2015,1394,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2015,1394,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2015,1394,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2015,1394,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2015,1394,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2015,1394,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2015,1394,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2015,1394,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2015,1394,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2016,1395,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2016,1395,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2016,1395,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2016,1395,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2016,1395,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2016,1395,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2016,1395,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2016,1395,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2016,1395,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2016,1395,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2017,1396,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2017,1396,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2017,1396,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2017,1396,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2017,1396,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2017,1396,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2017,1396,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2017,1396,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2017,1396,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2017,1396,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2017,1396,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2018,1397,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2018,1397,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2018,1397,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2018,1397,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2018,1397,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2018,1397,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2018,1397,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2018,1397,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2018,1397,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2018,1397,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2018,1397,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2019,1398,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2019,1398,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2019,1398,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2019,1398,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2019,1398,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2019,1398,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2019,1398,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2019,1398,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2019,1398,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2019,1398,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2019,1398,Saipa,Shahin,Petrol,"1.5L Turbo",110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2019,1398,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2020,1399,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2020,1399,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2020,1399,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2020,1399,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2020,1399,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2020,1399,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2020,1399,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2020,1399,Iran Khodro,Tara,Petrol,"1.6L I4 (TU5P)",113,144,6.6,9.2,210,155,Euro 5,8.5,"6-Speed AT, Dual VVTI, ESC, Airbags",N/A
+2020,1399,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2020,1399,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2020,1399,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2020,1399,Saipa,Shahin,Petrol,"1.5L Turbo",110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2020,1399,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2020,1399,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2021,1400,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2021,1400,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2021,1400,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2021,1400,Iran Khodro,Tara,Petrol,"1.6L I4 (TU5P)",113,144,6.6,9.2,210,155,Euro 5,8.5,"6-Speed AT, Dual VVTI, ESC, Airbags",N/A
+2021,1400,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2021,1400,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2021,1400,Saipa,Shahin,Petrol,"1.5L Turbo",110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2021,1400,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2021,1400,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2022,1401,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2022,1401,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2022,1401,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2022,1401,Iran Khodro,Tara,Petrol,"1.6L I4 (TU5P)",113,144,6.6,9.2,210,155,Euro 5,8.5,"6-Speed AT, Dual VVTI, ESC, Airbags",N/A
+2022,1401,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2022,1401,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2022,1401,Saipa,Shahin,Petrol,"1.5L Turbo",110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2022,1401,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2022,1401,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2023,1402,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2023,1402,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2023,1402,Iran Khodro,Tara (Turbo),Petrol,"1.65L Turbo",160,240,6.5,8.5,215,150,Euro 5,9.0,"6-Speed AT, Dual VVTI, ESC, 6 Airbags",N/A
+2023,1402,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2023,1402,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2023,1402,Saipa,Shahin,Petrol,"1.5L Turbo",110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2023,1402,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2023,1402,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2024,1403,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2024,1403,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2024,1403,Iran Khodro,Rira,Petrol / Hybrid,"1.7L Turbo + Electric",292,340,5.5,8.5,220,130,Euro 6,9.5,"6-Speed AT, Plug-in Hybrid, ESC, 6 Airbags",N/A
+2024,1403,Iran Khodro,Tara (Turbo),Petrol,"1.65L Turbo",160,240,6.5,8.5,215,150,Euro 5,9.0,"6-Speed AT, Dual VVTI, ESC, 6 Airbags",N/A
+2024,1403,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2024,1403,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2024,1403,Saipa,Shahin,Petrol,"1.5L Turbo",110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2024,1403,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2024,1403,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2025,1404,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2025,1404,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2025,1404,Iran Khodro,Rira,Petrol / Hybrid,"1.7L Turbo + Electric",292,340,5.5,8.5,220,130,Euro 6,9.5,"6-Speed AT, Plug-in Hybrid, ESC, 6 Airbags",N/A
+2025,1404,Iran Khodro,Tara (Turbo),Petrol,"1.65L Turbo",160,240,6.5,8.5,215,150,Euro 5,9.0,"6-Speed AT, Dual VVTI, ESC, 6 Airbags",N/A
+2025,1404,Saipa,Ariya,Petrol / Hybrid,"2.0L I4, 16-valve",150,204,6.5,9.0,190,155,Euro 6,8.5,"Tip-Tronic, Hybrid Option, ESC, Airbags",N/A
+2025,1404,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2025,1404,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2025,1404,Saipa,Shahin,Petrol,"1.5L Turbo",110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2025,1404,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2025,1404,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2026,1405,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2026,1405,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2026,1405,Iran Khodro,Rira,Petrol / Hybrid,"1.7L Turbo + Electric",292,340,5.5,8.5,220,130,Euro 6,9.5,"6-Speed AT, Plug-in Hybrid, ESC, 6 Airbags",N/A
+2026,1405,Iran Khodro,Tara (Turbo),Petrol,"1.65L Turbo",160,240,6.5,8.5,215,150,Euro 5,9.0,"6-Speed AT, Dual VVTI, ESC, 6 Airbags",N/A
+2026,1405,Saipa,Ariya,Petrol / Hybrid,"2.0L I4, 16-valve",150,204,6.5,9.0,190,155,Euro 6,8.5,"Tip-Tronic, Hybrid Option, ESC, Airbags",N/A
+2026,1405,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2026,1405,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2026,1405,Saipa,Shahin,Petrol,"1.5L Turbo",110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2026,1405,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
