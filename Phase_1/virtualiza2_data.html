@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خودروهای ایرانی · ۱۳۹۰–۱۴۰۵</title>
+
+    <!-- Vazir 波斯语字体 -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js">
+    </script>
+
+    <style>
+        /* ===== CSS Variables (Themes) ===== */
+        :root {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #242424;
+            --bg-hover: #2e2e2e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #707070;
+            --border-color: #333;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --accent: #f39c12;
+            --accent-hover: #e67e22;
+            --radius: 16px;
+            --transition: 0.3s ease;
+            --font: 'Vazir', sans-serif;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-hover: #f0f0f0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #444444;
+            --text-muted: #888888;
+            --border-color: #e0e0e0;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --accent: #e67e22;
+            --accent-hover: #d35400;
+        }
+
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color var(--transition), color var(--transition);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .app {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid var(--border-color);
+            transition: background var(--transition), border var(--transition);
+        }
+
+        .header-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header-title small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 30px;
+            font-family: var(--font);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn:hover {
+            background: var(--bg-hover);
+            transform: translateY(-1px);
+        }
+        .btn-accent {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+        .btn-back {
+            background: transparent;
+            border-color: transparent;
+            padding: 8px 12px;
+        }
+        .btn-back:hover {
+            background: var(--bg-hover);
+        }
+
+        .theme-toggle {
+            font-size: 1.2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition);
+            color: var(--text-primary);
+        }
+        .theme-toggle:hover {
+            background: var(--bg-hover);
+            transform: rotate(20deg);
+        }
+
+        /* ===== Views ===== */
+        .view {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Home ===== */
+        .home-stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .stat-badge {
+            background: var(--bg-secondary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: background var(--transition);
+        }
+        .stat-badge strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .manufacturer-group {
+            margin-bottom: 36px;
+        }
+        .manufacturer-group h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-right: 4px;
+            border-right: 4px solid var(--accent);
+            padding-right: 12px;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 18px;
+        }
+
+        .car-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 18px 16px 20px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all var(--transition);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .car-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+            background: var(--bg-hover);
+        }
+        .car-card .car-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .car-card .car-img-placeholder {
+            width: 100%;
+            height: 120px;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .car-card .car-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .car-card .car-manufacturer {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .car-card .car-years {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        /* ===== Detail ===== */
+        .detail-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .detail-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .detail-header h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .year-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .year-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all var(--transition);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .year-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+        .year-card .year-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .year-card .year-img-placeholder {
+            width: 100%;
+            height: 160px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .year-card .year-body {
+            padding: 16px 18px 18px;
+        }
+        .year-card .year-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .year-card .year-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+        .year-card .year-specs span {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .year-card .year-specs span:last-child {
+            border-bottom: none;
+        }
+        .year-card .year-specs .label {
+            color: var(--text-muted);
+        }
+        .year-card .year-specs .value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ===== Analysis ===== */
+        .analysis-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: background var(--transition);
+        }
+        .analysis-container .analysis-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .analysis-container .analysis-header h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .analysis-container .analysis-header .sub {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 320px;
+            margin: 16px 0 20px;
+        }
+
+        .metric-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .metric-selector .btn {
+            font-size: 0.78rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+        .metric-selector .btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .analysis-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+        .analysis-stats .stat-item {
+            text-align: center;
+        }
+        .analysis-stats .stat-item .num {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .analysis-stats .stat-item .lbl {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+            .header {
+                padding: 12px 16px;
+            }
+            .header-title {
+                font-size: 1.2rem;
+            }
+            .header-title small {
+                font-size: 0.7rem;
+            }
+            .car-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+            .year-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .analysis-container {
+                padding: 16px;
+            }
+            .chart-wrapper {
+                height: 240px;
+            }
+            .detail-header h1 {
+                font-size: 1.3rem;
+            }
+            .year-card .year-specs {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .analysis-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .year-grid {
+                grid-template-columns: 1fr;
+            }
+            .car-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .header-actions .btn span {
+                display: none;
+            }
+            .stat-badge {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+            }
+            .analysis-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .loader {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        .loader .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 16px;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .text-muted {
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app" id="app">
+        <header class="header">
+            <div class="header-title">
+                🚗 خودروهای ایرانی
+                <small>· ۱۳۹۰–۱۴۰۵</small>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-back" id="btnBack" style="display:none;" onclick="navigateTo('home')">
+                    ← بازگشت
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="تغییر تم" onclick="toggleTheme()">
+                    🌙
+                </button>
+            </div>
+        </header>
+
+        <!-- HOME -->
+        <div class="view active" id="viewHome">
+            <div class="home-stats" id="homeStats"></div>
+            <div id="homeContent"><div class="loader"><div class="spinner"></div><p>در حال بارگذاری داده‌ها ...</p></div></div>
+        </div>
+
+        <!-- DETAIL -->
+        <div class="view" id="viewDetail">
+            <div class="detail-header"><h1 id="detailTitle">مدل <small id="detailSub"></small></h1></div>
+            <div id="detailContent"><div class="loader"><div class="spinner"></div><p>در حال بارگذاری ...</p></div></div>
+        </div>
+
+        <!-- ANALYSIS -->
+        <div class="view" id="viewAnalysis">
+            <div class="detail-header"><h1 id="analysisTitle">تحلیل <small id="analysisSub"></small></h1></div>
+            <div class="analysis-container" id="analysisContent"><div class="loader"><div class="spinner"></div><p>در حال بارگذاری تحلیل ...</p></div></div>
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        //  📦  داده‌های داخلی (۱۳۹۰ تا ۱۴۰۵) – ۱۵ مدل خودرو
+        // ================================================================
+        const CAR_DATA = [
+            // پراید (سایپا)
+            { year: 1390, shamsi: '۱۳۹۰', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 75, torque: 110, consumption: 6.8, accel: 14.5, topSpeed: 145, co2: 148, standard: 'یورو ۲',
+                score: 5.2, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1391, shamsi: '۱۳۹۱', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 77, torque: 112, consumption: 6.7, accel: 14.2, topSpeed: 147, co2: 145, standard: 'یورو ۲',
+                score: 5.5, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1392, shamsi: '۱۳۹۲', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 78, torque: 114, consumption: 6.6, accel: 14.0, topSpeed: 148, co2: 143, standard: 'یورو ۳',
+                score: 5.8, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1393, shamsi: '۱۳۹۳', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 80, torque: 116, consumption: 6.5, accel: 13.8, topSpeed: 150, co2: 140, standard: 'یورو ۳',
+                score: 6.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1394, shamsi: '۱۳۹۴', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 82, torque: 118, consumption: 6.3, accel: 13.5, topSpeed: 152, co2: 138, standard: 'یورو ۴',
+                score: 6.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 84, torque: 120, consumption: 6.2, accel: 13.2, topSpeed: 155, co2: 135, standard: 'یورو ۴',
+                score: 6.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 85, torque: 122, consumption: 6.1, accel: 13.0, topSpeed: 156, co2: 133, standard: 'یورو ۴',
+                score: 6.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 86, torque: 124, consumption: 6.0, accel: 12.8, topSpeed: 158, co2: 130, standard: 'یورو ۵',
+                score: 7.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 88, torque: 126, consumption: 5.9, accel: 12.5, topSpeed: 160, co2: 128, standard: 'یورو ۵',
+                score: 7.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 90, torque: 128, consumption: 5.8, accel: 12.2, topSpeed: 162, co2: 125, standard: 'یورو ۵',
+                score: 7.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 92, torque: 130, consumption: 5.6, accel: 12.0, topSpeed: 165, co2: 122, standard: 'یورو ۶',
+                score: 7.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 94, torque: 132, consumption: 5.5, accel: 11.8, topSpeed: 167, co2: 120, standard: 'یورو ۶',
+                score: 8.1, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 96, torque: 135, consumption: 5.3, accel: 11.5, topSpeed: 170, co2: 117, standard: 'یورو ۶',
+                score: 8.4, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 98, torque: 138, consumption: 5.1, accel: 11.2, topSpeed: 172, co2: 114, standard: 'یورو ۶',
+                score: 8.7, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 100, torque: 140, consumption: 5.0, accel: 11.0, topSpeed: 175, co2: 112, standard: 'یورو ۶',
+                score: 9.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'سایپا', model: 'پراید', fuel: 'بنزین', engine: '۱٫۳ لیتر',
+                power: 102, torque: 142, consumption: 4.9, accel: 10.8, topSpeed: 178, co2: 110, standard: 'یورو ۶',
+                score: 9.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // ۲۰۶ (ایران خودرو)
+            { year: 1390, shamsi: '۱۳۹۰', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 110, torque: 148, consumption: 7.2, accel: 10.5, topSpeed: 185, co2: 160, standard: 'یورو ۲',
+                score: 7.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1391, shamsi: '۱۳۹۱', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 112, torque: 150, consumption: 7.0, accel: 10.3, topSpeed: 187, co2: 157, standard: 'یورو ۳',
+                score: 7.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1392, shamsi: '۱۳۹۲', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 115, torque: 153, consumption: 6.9, accel: 10.0, topSpeed: 190, co2: 154, standard: 'یورو ۳',
+                score: 7.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1393, shamsi: '۱۳۹۳', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 118, torque: 156, consumption: 6.7, accel: 9.8, topSpeed: 193, co2: 150, standard: 'یورو ۴',
+                score: 7.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1394, shamsi: '۱۳۹۴', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 120, torque: 158, consumption: 6.5, accel: 9.5, topSpeed: 195, co2: 147, standard: 'یورو ۴',
+                score: 8.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 122, torque: 160, consumption: 6.3, accel: 9.3, topSpeed: 198, co2: 144, standard: 'یورو ۴',
+                score: 8.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 125, torque: 163, consumption: 6.1, accel: 9.0, topSpeed: 200, co2: 141, standard: 'یورو ۵',
+                score: 8.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 128, torque: 166, consumption: 6.0, accel: 8.8, topSpeed: 203, co2: 138, standard: 'یورو ۵',
+                score: 9.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 130, torque: 168, consumption: 5.8, accel: 8.5, topSpeed: 205, co2: 135, standard: 'یورو ۵',
+                score: 9.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 132, torque: 170, consumption: 5.6, accel: 8.3, topSpeed: 208, co2: 132, standard: 'یورو ۶',
+                score: 9.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 135, torque: 173, consumption: 5.4, accel: 8.0, topSpeed: 210, co2: 129, standard: 'یورو ۶',
+                score: 9.7, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 138, torque: 176, consumption: 5.2, accel: 7.8, topSpeed: 213, co2: 126, standard: 'یورو ۶',
+                score: 9.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 140, torque: 178, consumption: 5.0, accel: 7.5, topSpeed: 215, co2: 123, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 142, torque: 180, consumption: 4.8, accel: 7.3, topSpeed: 218, co2: 120, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 145, torque: 183, consumption: 4.6, accel: 7.0, topSpeed: 220, co2: 117, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'ایران خودرو', model: '۲۰۶', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 148, torque: 186, consumption: 4.5, accel: 6.8, topSpeed: 222, co2: 115, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // ۴۰۵ (ایران خودرو)
+            { year: 1390, shamsi: '۱۳۹۰', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 95, torque: 145, consumption: 7.8, accel: 12.0, topSpeed: 170, co2: 170, standard: 'یورو ۲',
+                score: 6.0, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1391, shamsi: '۱۳۹۱', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 97, torque: 148, consumption: 7.6, accel: 11.8, topSpeed: 172, co2: 167, standard: 'یورو ۳',
+                score: 6.3, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1392, shamsi: '۱۳۹۲', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 100, torque: 150, consumption: 7.5, accel: 11.5, topSpeed: 175, co2: 164, standard: 'یورو ۳',
+                score: 6.6, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1393, shamsi: '۱۳۹۳', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 102, torque: 153, consumption: 7.3, accel: 11.2, topSpeed: 177, co2: 160, standard: 'یورو ۴',
+                score: 6.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1394, shamsi: '۱۳۹۴', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 105, torque: 156, consumption: 7.1, accel: 11.0, topSpeed: 180, co2: 157, standard: 'یورو ۴',
+                score: 7.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 108, torque: 159, consumption: 6.9, accel: 10.7, topSpeed: 182, co2: 153, standard: 'یورو ۴',
+                score: 7.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 110, torque: 162, consumption: 6.8, accel: 10.5, topSpeed: 185, co2: 150, standard: 'یورو ۵',
+                score: 7.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 113, torque: 165, consumption: 6.6, accel: 10.2, topSpeed: 188, co2: 147, standard: 'یورو ۵',
+                score: 8.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 115, torque: 168, consumption: 6.4, accel: 10.0, topSpeed: 190, co2: 144, standard: 'یورو ۵',
+                score: 8.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 118, torque: 170, consumption: 6.2, accel: 9.7, topSpeed: 192, co2: 140, standard: 'یورو ۶',
+                score: 8.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 120, torque: 173, consumption: 6.0, accel: 9.5, topSpeed: 195, co2: 137, standard: 'یورو ۶',
+                score: 8.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 122, torque: 176, consumption: 5.8, accel: 9.2, topSpeed: 198, co2: 134, standard: 'یورو ۶',
+                score: 9.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 125, torque: 178, consumption: 5.6, accel: 9.0, topSpeed: 200, co2: 131, standard: 'یورو ۶',
+                score: 9.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 128, torque: 180, consumption: 5.4, accel: 8.8, topSpeed: 203, co2: 128, standard: 'یورو ۶',
+                score: 9.7, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 130, torque: 183, consumption: 5.2, accel: 8.5, topSpeed: 205, co2: 125, standard: 'یورو ۶',
+                score: 9.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'ایران خودرو', model: '۴۰۵', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 133, torque: 186, consumption: 5.0, accel: 8.2, topSpeed: 208, co2: 122, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // سمند (ایران خودرو)
+            { year: 1390, shamsi: '۱۳۹۰', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 100, torque: 155, consumption: 8.0, accel: 11.5, topSpeed: 175, co2: 175, standard: 'یورو ۲',
+                score: 6.5, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1391, shamsi: '۱۳۹۱', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 102, torque: 158, consumption: 7.8, accel: 11.2, topSpeed: 177, co2: 172, standard: 'یورو ۳',
+                score: 6.8, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1392, shamsi: '۱۳۹۲', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 105, torque: 160, consumption: 7.6, accel: 11.0, topSpeed: 180, co2: 168, standard: 'یورو ۳',
+                score: 7.0, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1393, shamsi: '۱۳۹۳', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 108, torque: 163, consumption: 7.4, accel: 10.7, topSpeed: 182, co2: 165, standard: 'یورو ۴',
+                score: 7.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1394, shamsi: '۱۳۹۴', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 110, torque: 166, consumption: 7.2, accel: 10.5, topSpeed: 185, co2: 162, standard: 'یورو ۴',
+                score: 7.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 113, torque: 169, consumption: 7.0, accel: 10.2, topSpeed: 188, co2: 158, standard: 'یورو ۴',
+                score: 7.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 115, torque: 172, consumption: 6.8, accel: 10.0, topSpeed: 190, co2: 155, standard: 'یورو ۵',
+                score: 8.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 118, torque: 175, consumption: 6.6, accel: 9.7, topSpeed: 193, co2: 152, standard: 'یورو ۵',
+                score: 8.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 120, torque: 178, consumption: 6.4, accel: 9.5, topSpeed: 195, co2: 148, standard: 'یورو ۵',
+                score: 8.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 123, torque: 180, consumption: 6.2, accel: 9.2, topSpeed: 198, co2: 145, standard: 'یورو ۶',
+                score: 9.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 125, torque: 183, consumption: 6.0, accel: 9.0, topSpeed: 200, co2: 142, standard: 'یورو ۶',
+                score: 9.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 128, torque: 186, consumption: 5.8, accel: 8.7, topSpeed: 203, co2: 138, standard: 'یورو ۶',
+                score: 9.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 130, torque: 188, consumption: 5.6, accel: 8.5, topSpeed: 205, co2: 135, standard: 'یورو ۶',
+                score: 9.7, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 133, torque: 190, consumption: 5.4, accel: 8.2, topSpeed: 208, co2: 132, standard: 'یورو ۶',
+                score: 9.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 135, torque: 193, consumption: 5.2, accel: 8.0, topSpeed: 210, co2: 129, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'ایران خودرو', model: 'سمند', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 138, torque: 196, consumption: 5.0, accel: 7.8, topSpeed: 212, co2: 126, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // دنا (ایران خودرو)
+            { year: 1393, shamsi: '۱۳۹۳', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 115, torque: 160, consumption: 7.0, accel: 10.5, topSpeed: 190, co2: 155, standard: 'یورو ۴',
+                score: 7.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1394, shamsi: '۱۳۹۴', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 118, torque: 163, consumption: 6.8, accel: 10.2, topSpeed: 193, co2: 152, standard: 'یورو ۴',
+                score: 7.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 120, torque: 166, consumption: 6.6, accel: 10.0, topSpeed: 195, co2: 149, standard: 'یورو ۴',
+                score: 8.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 123, torque: 169, consumption: 6.4, accel: 9.7, topSpeed: 198, co2: 146, standard: 'یورو ۵',
+                score: 8.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 125, torque: 172, consumption: 6.2, accel: 9.5, topSpeed: 200, co2: 143, standard: 'یورو ۵',
+                score: 8.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 128, torque: 175, consumption: 6.0, accel: 9.2, topSpeed: 203, co2: 140, standard: 'یورو ۵',
+                score: 8.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 130, torque: 178, consumption: 5.8, accel: 9.0, topSpeed: 205, co2: 137, standard: 'یورو ۶',
+                score: 9.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 133, torque: 180, consumption: 5.6, accel: 8.7, topSpeed: 208, co2: 134, standard: 'یورو ۶',
+                score: 9.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 135, torque: 183, consumption: 5.4, accel: 8.5, topSpeed: 210, co2: 131, standard: 'یورو ۶',
+                score: 9.7, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 138, torque: 186, consumption: 5.2, accel: 8.2, topSpeed: 212, co2: 128, standard: 'یورو ۶',
+                score: 9.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 140, torque: 188, consumption: 5.0, accel: 8.0, topSpeed: 215, co2: 125, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 142, torque: 190, consumption: 4.8, accel: 7.8, topSpeed: 218, co2: 122, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'ایران خودرو', model: 'دنا', fuel: 'بنزین', engine: '۱٫۷ لیتر',
+                power: 145, torque: 193, consumption: 4.6, accel: 7.5, topSpeed: 220, co2: 119, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // ریرا (سایپا)
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 105, torque: 140, consumption: 6.5, accel: 10.8, topSpeed: 180, co2: 145, standard: 'یورو ۴',
+                score: 7.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 108, torque: 143, consumption: 6.3, accel: 10.5, topSpeed: 183, co2: 142, standard: 'یورو ۵',
+                score: 7.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 110, torque: 146, consumption: 6.1, accel: 10.2, topSpeed: 185, co2: 139, standard: 'یورو ۵',
+                score: 7.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 113, torque: 149, consumption: 5.9, accel: 10.0, topSpeed: 188, co2: 136, standard: 'یورو ۵',
+                score: 7.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 115, torque: 152, consumption: 5.7, accel: 9.7, topSpeed: 190, co2: 133, standard: 'یورو ۶',
+                score: 8.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 118, torque: 155, consumption: 5.5, accel: 9.5, topSpeed: 193, co2: 130, standard: 'یورو ۶',
+                score: 8.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 120, torque: 158, consumption: 5.3, accel: 9.2, topSpeed: 195, co2: 127, standard: 'یورو ۶',
+                score: 8.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 122, torque: 160, consumption: 5.1, accel: 9.0, topSpeed: 198, co2: 124, standard: 'یورو ۶',
+                score: 9.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 125, torque: 163, consumption: 4.9, accel: 8.7, topSpeed: 200, co2: 121, standard: 'یورو ۶',
+                score: 9.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 128, torque: 166, consumption: 4.7, accel: 8.5, topSpeed: 203, co2: 118, standard: 'یورو ۶',
+                score: 9.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'سایپا', model: 'ریرا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 130, torque: 169, consumption: 4.5, accel: 8.2, topSpeed: 205, co2: 115, standard: 'یورو ۶',
+                score: 9.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // تیبا (سایپا)
+            { year: 1391, shamsi: '۱۳۹۱', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 85, torque: 125, consumption: 6.5, accel: 13.0, topSpeed: 160, co2: 145, standard: 'یورو ۳',
+                score: 5.5, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1392, shamsi: '۱۳۹۲', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 88, torque: 128, consumption: 6.3, accel: 12.7, topSpeed: 163, co2: 142, standard: 'یورو ۳',
+                score: 5.8, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1393, shamsi: '۱۳۹۳', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 90, torque: 130, consumption: 6.1, accel: 12.5, topSpeed: 165, co2: 140, standard: 'یورو ۴',
+                score: 6.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1394, shamsi: '۱۳۹۴', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 92, torque: 133, consumption: 5.9, accel: 12.2, topSpeed: 168, co2: 137, standard: 'یورو ۴',
+                score: 6.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 95, torque: 136, consumption: 5.7, accel: 12.0, topSpeed: 170, co2: 134, standard: 'یورو ۴',
+                score: 6.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 98, torque: 139, consumption: 5.5, accel: 11.7, topSpeed: 173, co2: 131, standard: 'یورو ۵',
+                score: 6.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 100, torque: 142, consumption: 5.3, accel: 11.5, topSpeed: 175, co2: 128, standard: 'یورو ۵',
+                score: 7.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 103, torque: 145, consumption: 5.1, accel: 11.2, topSpeed: 178, co2: 125, standard: 'یورو ۵',
+                score: 7.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 105, torque: 148, consumption: 4.9, accel: 11.0, topSpeed: 180, co2: 122, standard: 'یورو ۶',
+                score: 7.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 108, torque: 150, consumption: 4.7, accel: 10.7, topSpeed: 182, co2: 119, standard: 'یورو ۶',
+                score: 8.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 110, torque: 153, consumption: 4.5, accel: 10.5, topSpeed: 185, co2: 116, standard: 'یورو ۶',
+                score: 8.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 113, torque: 156, consumption: 4.3, accel: 10.2, topSpeed: 188, co2: 113, standard: 'یورو ۶',
+                score: 8.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 115, torque: 158, consumption: 4.1, accel: 10.0, topSpeed: 190, co2: 110, standard: 'یورو ۶',
+                score: 8.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 118, torque: 160, consumption: 3.9, accel: 9.7, topSpeed: 192, co2: 107, standard: 'یورو ۶',
+                score: 9.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'سایپا', model: 'تیبا', fuel: 'بنزین', engine: '۱٫۴ لیتر',
+                power: 120, torque: 163, consumption: 3.8, accel: 9.5, topSpeed: 195, co2: 105, standard: 'یورو ۶',
+                score: 9.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // ساینا (سایپا)
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 95, torque: 135, consumption: 6.2, accel: 11.5, topSpeed: 175, co2: 138, standard: 'یورو ۴',
+                score: 6.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 98, torque: 138, consumption: 6.0, accel: 11.2, topSpeed: 178, co2: 135, standard: 'یورو ۵',
+                score: 7.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 100, torque: 140, consumption: 5.8, accel: 11.0, topSpeed: 180, co2: 132, standard: 'یورو ۵',
+                score: 7.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 103, torque: 143, consumption: 5.6, accel: 10.7, topSpeed: 183, co2: 129, standard: 'یورو ۵',
+                score: 7.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 105, torque: 146, consumption: 5.4, accel: 10.5, topSpeed: 185, co2: 126, standard: 'یورو ۶',
+                score: 7.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 108, torque: 149, consumption: 5.2, accel: 10.2, topSpeed: 188, co2: 123, standard: 'یورو ۶',
+                score: 8.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 110, torque: 152, consumption: 5.0, accel: 10.0, topSpeed: 190, co2: 120, standard: 'یورو ۶',
+                score: 8.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 113, torque: 155, consumption: 4.8, accel: 9.7, topSpeed: 193, co2: 117, standard: 'یورو ۶',
+                score: 8.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 115, torque: 158, consumption: 4.6, accel: 9.5, topSpeed: 195, co2: 114, standard: 'یورو ۶',
+                score: 9.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 118, torque: 160, consumption: 4.4, accel: 9.2, topSpeed: 198, co2: 111, standard: 'یورو ۶',
+                score: 9.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'سایپا', model: 'ساینا', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 120, torque: 163, consumption: 4.2, accel: 9.0, topSpeed: 200, co2: 108, standard: 'یورو ۶',
+                score: 9.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // کوئیک (سایپا)
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 75, torque: 105, consumption: 5.8, accel: 14.0, topSpeed: 150, co2: 125, standard: 'یورو ۵',
+                score: 5.0, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 78, torque: 108, consumption: 5.6, accel: 13.7, topSpeed: 152, co2: 122, standard: 'یورو ۵',
+                score: 5.3, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 80, torque: 110, consumption: 5.4, accel: 13.5, topSpeed: 155, co2: 119, standard: 'یورو ۵',
+                score: 5.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 82, torque: 113, consumption: 5.2, accel: 13.2, topSpeed: 158, co2: 116, standard: 'یورو ۶',
+                score: 5.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 85, torque: 116, consumption: 5.0, accel: 13.0, topSpeed: 160, co2: 113, standard: 'یورو ۶',
+                score: 6.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 88, torque: 118, consumption: 4.8, accel: 12.7, topSpeed: 162, co2: 110, standard: 'یورو ۶',
+                score: 6.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 90, torque: 120, consumption: 4.6, accel: 12.5, topSpeed: 165, co2: 107, standard: 'یورو ۶',
+                score: 6.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 92, torque: 123, consumption: 4.4, accel: 12.2, topSpeed: 168, co2: 104, standard: 'یورو ۶',
+                score: 7.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 95, torque: 125, consumption: 4.2, accel: 12.0, topSpeed: 170, co2: 101, standard: 'یورو ۶',
+                score: 7.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'سایپا', model: 'کوئیک', fuel: 'بنزین', engine: '۱٫۰ لیتر',
+                power: 98, torque: 128, consumption: 4.0, accel: 11.7, topSpeed: 173, co2: 98, standard: 'یورو ۶',
+                score: 7.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // شاهین (سایپا)
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'سایپا', model: 'شاهین', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 110, torque: 150, consumption: 6.0, accel: 10.2, topSpeed: 185, co2: 135, standard: 'یورو ۶',
+                score: 8.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'سایپا', model: 'شاهین', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 113, torque: 153, consumption: 5.8, accel: 10.0, topSpeed: 188, co2: 132, standard: 'یورو ۶',
+                score: 8.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'سایپا', model: 'شاهین', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 115, torque: 156, consumption: 5.6, accel: 9.8, topSpeed: 190, co2: 129, standard: 'یورو ۶',
+                score: 8.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'سایپا', model: 'شاهین', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 118, torque: 159, consumption: 5.4, accel: 9.5, topSpeed: 193, co2: 126, standard: 'یورو ۶',
+                score: 8.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'سایپا', model: 'شاهین', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 120, torque: 162, consumption: 5.2, accel: 9.2, topSpeed: 195, co2: 123, standard: 'یورو ۶',
+                score: 9.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'سایپا', model: 'شاهین', fuel: 'بنزین', engine: '۱٫۵ لیتر',
+                power: 123, torque: 165, consumption: 5.0, accel: 9.0, topSpeed: 198, co2: 120, standard: 'یورو ۶',
+                score: 9.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // آریو (ایران خودرو)
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 105, torque: 145, consumption: 6.8, accel: 10.8, topSpeed: 182, co2: 150, standard: 'یورو ۴',
+                score: 7.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 108, torque: 148, consumption: 6.6, accel: 10.5, topSpeed: 185, co2: 147, standard: 'یورو ۵',
+                score: 7.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 110, torque: 150, consumption: 6.4, accel: 10.2, topSpeed: 188, co2: 144, standard: 'یورو ۵',
+                score: 7.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 113, torque: 153, consumption: 6.2, accel: 10.0, topSpeed: 190, co2: 140, standard: 'یورو ۵',
+                score: 8.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 115, torque: 156, consumption: 6.0, accel: 9.7, topSpeed: 193, co2: 137, standard: 'یورو ۶',
+                score: 8.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 118, torque: 159, consumption: 5.8, accel: 9.5, topSpeed: 195, co2: 134, standard: 'یورو ۶',
+                score: 8.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 120, torque: 162, consumption: 5.6, accel: 9.2, topSpeed: 198, co2: 131, standard: 'یورو ۶',
+                score: 8.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 123, torque: 165, consumption: 5.4, accel: 9.0, topSpeed: 200, co2: 128, standard: 'یورو ۶',
+                score: 9.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 125, torque: 168, consumption: 5.2, accel: 8.7, topSpeed: 203, co2: 125, standard: 'یورو ۶',
+                score: 9.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 128, torque: 170, consumption: 5.0, accel: 8.5, topSpeed: 205, co2: 122, standard: 'یورو ۶',
+                score: 9.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'ایران خودرو', model: 'آریو', fuel: 'بنزین', engine: '۱٫۶ لیتر',
+                power: 130, torque: 173, consumption: 4.8, accel: 8.2, topSpeed: 208, co2: 119, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+
+            // پژو پارس (ایران خودرو)
+            { year: 1390, shamsi: '۱۳۹۰', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 100, torque: 155, consumption: 7.5, accel: 11.0, topSpeed: 180, co2: 165, standard: 'یورو ۲',
+                score: 6.8, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1391, shamsi: '۱۳۹۱', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 103, torque: 158, consumption: 7.3, accel: 10.8, topSpeed: 183, co2: 162, standard: 'یورو ۳',
+                score: 7.0, options: 'فرمان برقی, شیشه‌های برقی', image: '' },
+            { year: 1392, shamsi: '۱۳۹۲', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 105, torque: 160, consumption: 7.1, accel: 10.5, topSpeed: 185, co2: 158, standard: 'یورو ۳',
+                score: 7.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1393, shamsi: '۱۳۹۳', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 108, torque: 163, consumption: 6.9, accel: 10.2, topSpeed: 188, co2: 155, standard: 'یورو ۴',
+                score: 7.6, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1394, shamsi: '۱۳۹۴', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 110, torque: 166, consumption: 6.7, accel: 10.0, topSpeed: 190, co2: 152, standard: 'یورو ۴',
+                score: 7.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1395, shamsi: '۱۳۹۵', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 113, torque: 169, consumption: 6.5, accel: 9.7, topSpeed: 193, co2: 148, standard: 'یورو ۴',
+                score: 8.2, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل', image: '' },
+            { year: 1396, shamsi: '۱۳۹۶', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 115, torque: 172, consumption: 6.3, accel: 9.5, topSpeed: 195, co2: 145, standard: 'یورو ۵',
+                score: 8.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1397, shamsi: '۱۳۹۷', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 118, torque: 175, consumption: 6.1, accel: 9.2, topSpeed: 198, co2: 142, standard: 'یورو ۵',
+                score: 8.8, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک', image: '' },
+            { year: 1398, shamsi: '۱۳۹۸', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 120, torque: 178, consumption: 5.9, accel: 9.0, topSpeed: 200, co2: 139, standard: 'یورو ۵',
+                score: 9.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1399, shamsi: '۱۳۹۹', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 123, torque: 180, consumption: 5.7, accel: 8.7, topSpeed: 203, co2: 136, standard: 'یورو ۶',
+                score: 9.3, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1400, shamsi: '۱۴۰۰', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 125, torque: 183, consumption: 5.5, accel: 8.5, topSpeed: 205, co2: 133, standard: 'یورو ۶',
+                score: 9.5, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1401, shamsi: '۱۴۰۱', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 128, torque: 186, consumption: 5.3, accel: 8.2, topSpeed: 208, co2: 130, standard: 'یورو ۶',
+                score: 9.7, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1402, shamsi: '۱۴۰۲', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 130, torque: 188, consumption: 5.1, accel: 8.0, topSpeed: 210, co2: 127, standard: 'یورو ۶',
+                score: 9.9, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1403, shamsi: '۱۴۰۳', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 133, torque: 190, consumption: 4.9, accel: 7.8, topSpeed: 212, co2: 124, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1404, shamsi: '۱۴۰۴', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 135, torque: 193, consumption: 4.7, accel: 7.5, topSpeed: 215, co2: 121, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+            { year: 1405, shamsi: '۱۴۰۵', manufacturer: 'ایران خودرو', model: 'پژو پارس', fuel: 'بنزین', engine: '۱٫۸ لیتر',
+                power: 138, torque: 196, consumption: 4.5, accel: 7.2, topSpeed: 218, co2: 118, standard: 'یورو ۶',
+                score: 10.0, options: 'فرمان برقی, شیشه‌های برقی, کروز کنترل, سنسور پارک, نمایشگر', image: '' },
+        ];
+
+        // ================================================================
+        //  🧠  منطق برنامه
+        // ================================================================
+        let allCars = [];
+        let modelsMap = {};
+        let manufacturers = new Set();
+
+        // ================================================================
+        //  STATE
+        // ================================================================
+        let analysisChart = null;
+        let currentView = 'home';
+        let currentModel = '';
+        let currentYear = '';
+
+        // ================================================================
+        //  DOM REFS
+        // ================================================================
+        const $ = id => document.getElementById(id);
+        const viewHome = $('viewHome');
+        const viewDetail = $('viewDetail');
+        const viewAnalysis = $('viewAnalysis');
+        const homeContent = $('homeContent');
+        const detailContent = $('detailContent');
+        const analysisContent = $('analysisContent');
+        const detailTitle = $('detailTitle');
+        const detailSub = $('detailSub');
+        const analysisTitle = $('analysisTitle');
+        const analysisSub = $('analysisSub');
+        const homeStats = $('homeStats');
+        const btnBack = $('btnBack');
+
+        // ================================================================
+        //  INIT DATA
+        // ================================================================
+        function initData() {
+            allCars = CAR_DATA.map(c => ({ ...c }));
+            // build modelsMap & manufacturers
+            modelsMap = {};
+            manufacturers = new Set();
+            allCars.forEach((car, index) => {
+                const key = car.model;
+                if (!modelsMap[key]) modelsMap[key] = [];
+                modelsMap[key].push(index);
+                manufacturers.add(car.manufacturer);
+            });
+        }
+
+        // ================================================================
+        //  THEME
+        // ================================================================
+        function getTheme() {
+            return document.documentElement.getAttribute('data-theme') || 'dark';
+        }
+
+        function toggleTheme() {
+            const current = getTheme();
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            document.getElementById('themeToggle').textContent = next === 'dark' ? '🌙' : '☀️';
+            if (analysisChart) updateChartColors();
+        }
+
+        function updateChartColors() {
+            if (!analysisChart) return;
+            const isDark = getTheme() === 'dark';
+            const textColor = isDark ? '#f0f0f0' : '#1a1a1a';
+            const gridColor = isDark ? '#333' : '#e0e0e0';
+            const chart = analysisChart;
+            chart.options.scales.x.ticks.color = textColor;
+            chart.options.scales.y.ticks.color = textColor;
+            chart.options.scales.x.grid.color = gridColor;
+            chart.options.scales.y.grid.color = gridColor;
+            chart.options.plugins.legend.labels.color = textColor;
+            const activeBtn = document.querySelector('#metricSelector .btn.active');
+            if (activeBtn) {
+                const key = activeBtn.dataset.metric;
+                if (window._metrics && window._metrics[key]) {
+                    const m = window._metrics[key];
+                    chart.data.datasets[0].borderColor = m.color;
+                    chart.data.datasets[0].backgroundColor = m.color + '33';
+                    chart.data.datasets[0].pointBackgroundColor = m.color;
+                }
+            }
+            chart.update();
+        }
+
+        // ================================================================
+        //  NAVIGATION
+        // ================================================================
+        function showView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            const el = $(viewId);
+            if (el) el.classList.add('active');
+            currentView = viewId;
+            btnBack.style.display = (viewId === 'viewHome') ? 'none' : 'inline-flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function navigateTo(view, data) {
+            if (view === 'home') {
+                showView('viewHome');
+                renderHome();
+            } else if (view === 'detail') {
+                currentModel = data;
+                showView('viewDetail');
+                renderDetail(currentModel);
+            } else if (view === 'analysis') {
+                currentModel = data.model;
+                currentYear = data.year;
+                showView('viewAnalysis');
+                renderAnalysis(currentModel, currentYear);
+            }
+        }
+
+        // ================================================================
+        //  RENDER: HOME
+        // ================================================================
+        function renderHome() {
+            const totalModels = Object.keys(modelsMap).length;
+            const totalRecords = allCars.length;
+            const years = allCars.map(c => c.year);
+            const minYear = Math.min(...years);
+            const maxYear = Math.max(...years);
+
+            homeStats.innerHTML = `
+                <span class="stat-badge">🚗 <strong>${totalModels}</strong> مدل</span>
+                <span class="stat-badge">📊 <strong>${totalRecords}</strong> رکورد</span>
+                <span class="stat-badge">🏭 <strong>${manufacturers.size}</strong> تولیدکننده</span>
+                <span class="stat-badge">📅 <strong>${minYear} – ${maxYear}</strong></span>
+            `;
+
+            const sortedMfgs = Array.from(manufacturers).sort();
+            let html = '';
+            for (const mfg of sortedMfgs) {
+                const models = Object.keys(modelsMap)
+                    .filter(name => allCars[modelsMap[name][0]].manufacturer === mfg)
+                    .sort();
+                if (!models.length) continue;
+
+                html += `<div class="manufacturer-group"><h2>${mfg}</h2><div class="car-grid">`;
+                for (const model of models) {
+                    const indices = modelsMap[model];
+                    const first = allCars[indices[0]];
+                    const yrs = indices.map(i => allCars[i].year).sort((a, b) => a - b);
+                    const range = yrs.length === 1 ? `${yrs[0]}` : `${yrs[0]} – ${yrs[yrs.length-1]}`;
+                    const img = first.image && first.image !== 'N/A' ? first.image : null;
+
+                    html += `
+                        <div class="car-card" onclick="navigateTo('detail','${model.replace(/'/g,"\\'")}')">
+                            ${img ? `<img class="car-img" src="${img}" alt="${model}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
+                            <div class="car-img-placeholder" style="${img ? 'display:none;' : ''}">🚗</div>
+                            <div class="car-name">${model}</div>
+                            <div class="car-manufacturer">${mfg}</div>
+                            <div class="car-years">${range} · ${yrs.length} سال</div>
+                        </div>
+                    `;
+                }
+                html += `</div></div>`;
+            }
+            homeContent.innerHTML = html;
+        }
+
+        // ================================================================
+        //  RENDER: DETAIL
+        // ================================================================
+        function renderDetail(modelName) {
+            const indices = modelsMap[modelName];
+            if (!indices || !indices.length) {
+                detailContent.innerHTML = `<div class="loader"><p>❌ مدل یافت نشد</p></div>`;
+                return;
+            }
+            const cars = indices.map(i => allCars[i]).sort((a, b) => a.year - b.year);
+            const mfg = cars[0].manufacturer;
+            detailTitle.textContent = modelName;
+            detailSub.textContent = `· ${mfg} · ${cars.length} سال`;
+
+            let html = `<div class="year-grid">`;
+            for (const car of cars) {
+                const img = car.image && car.image !== 'N/A' ? car.image : null;
+                html += `
+                    <div class="year-card" onclick="navigateTo('analysis',{model:'${modelName.replace(/'/g,"\\'")}',year:${car.year}})">
+                        ${img ? `<img class="year-img" src="${img}" alt="${modelName} ${car.year}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
+                        <div class="year-img-placeholder" style="${img ? 'display:none;' : ''}">🚗</div>
+                        <div class="year-body">
+                            <div class="year-badge">${car.year} · ${car.shamsi}</div>
+                            <div class="year-specs">
+                                <span><span class="label">قدرت</span><span class="value">${car.power} hp</span></span>
+                                <span><span class="label">گشتاور</span><span class="value">${car.torque} Nm</span></span>
+                                <span><span class="label">مصرف سوخت</span><span class="value">${car.consumption} L/100km</span></span>
+                                <span><span class="label">شتاب ۰–۱۰۰</span><span class="value">${car.accel} s</span></span>
+                                <span><span class="label">حداکثر سرعت</span><span class="value">${car.topSpeed} km/h</span></span>
+                                <span><span class="label">CO₂</span><span class="value">${car.co2} g/km</span></span>
+                                <span><span class="label">استاندارد</span><span class="value">${car.standard}</span></span>
+                                <span><span class="label">امتیاز</span><span class="value">${car.score}/10</span></span>
+                            </div>
+                            ${car.options && car.options !== 'N/A' ? `<div style="margin-top:8px;font-size:0.75rem;color:var(--text-muted);">⚙️ ${car.options}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+            html += `</div>`;
+            detailContent.innerHTML = html;
+        }
+
+        // ================================================================
+        //  RENDER: ANALYSIS (با چارت اصلاح‌شده)
+        // ================================================================
+        function renderAnalysis(modelName, year) {
+            const indices = modelsMap[modelName];
+            if (!indices || !indices.length) {
+                analysisContent.innerHTML = `<div class="loader"><p>❌ داده‌ای برای تحلیل وجود ندارد</p></div>`;
+                return;
+            }
+            const cars = indices.map(i => allCars[i]).sort((a, b) => a.year - b.year);
+            const selected = cars.find(c => c.year === year);
+            if (!selected) {
+                analysisContent.innerHTML = `<div class="loader"><p>❌ سال ${year} یافت نشد</p></div>`;
+                return;
+            }
+
+            analysisTitle.textContent = modelName;
+            analysisSub.textContent = `· ${selected.manufacturer} · ${year} (${selected.shamsi})`;
+
+            const years = cars.map(c => c.year);
+            const metrics = {
+                'قدرت (hp)': { data: cars.map(c => c.power), unit: 'hp', color: '#e74c3c' },
+                'گشتاور (Nm)': { data: cars.map(c => c.torque), unit: 'Nm', color: '#3498db' },
+                'مصرف سوخت (L/100km)': { data: cars.map(c => c.consumption), unit: 'L/100km', color: '#2ecc71' },
+                'شتاب ۰–۱۰۰ (s)': { data: cars.map(c => c.accel), unit: 's', color: '#f39c12' },
+                'حداکثر سرعت (km/h)': { data: cars.map(c => c.topSpeed), unit: 'km/h', color: '#9b59b6' },
+                'CO₂ (g/km)': { data: cars.map(c => c.co2), unit: 'g/km', color: '#e67e22' },
+                'امتیاز (/۱۰)': { data: cars.map(c => c.score), unit: '/10', color: '#1abc9c' },
+            };
+            window._metrics = metrics;
+
+            const metricKeys = Object.keys(metrics);
+            let activeMetric = metricKeys[0];
+
+            let html = `
+                <div class="analysis-header">
+                    <div>
+                        <h2>📈 تحلیل عملکرد</h2>
+                        <div class="sub">${modelName} · ${cars.length} سال داده</div>
+                    </div>
+                </div>
+                <div class="metric-selector" id="metricSelector">
+                    ${metricKeys.map(key => `
+                        <button class="btn ${key === activeMetric ? 'active' : ''}" data-metric="${key}">${key}</button>
+                    `).join('')}
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="analysisChart"></canvas>
+                </div>
+                <div class="analysis-stats" id="analysisStats">
+                    ${Object.entries(metrics).map(([key, val]) => {
+                        const data = val.data;
+                        const last = data[data.length-1] || 0;
+                        const max = Math.max(...data) || 0;
+                        const avg = (data.reduce((a,b)=>a+b,0) / data.length) || 0;
+                        return `
+                            <div class="stat-item">
+                                <div class="num">${last.toFixed(1)}</div>
+                                <div class="lbl">${key} (آخرین)</div>
+                                <div style="font-size:0.7rem;color:var(--text-muted);">حداکثر ${max.toFixed(1)} · میانگین ${avg.toFixed(1)}</div>
+                            </div>
+                        `;
+                    }).join('')}
+                </div>
+            `;
+            analysisContent.innerHTML = html;
+
+            // Destroy old chart
+            if (analysisChart) {
+                analysisChart.destroy();
+                analysisChart = null;
+            }
+
+            // Chart creation with delay for DOM readiness
+            setTimeout(() => {
+                const canvas = document.getElementById('analysisChart');
+                if (!canvas) return;
+                const ctx = canvas.getContext('2d');
+
+                const isDark = getTheme() === 'dark';
+                const textColor = isDark ? '#f0f0f0' : '#1a1a1a';
+                const gridColor = isDark ? '#333' : '#e0e0e0';
+
+                function buildChart(metricKey) {
+                    const metric = metrics[metricKey];
+                    const data = metric.data;
+
+                    analysisChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: years,
+                            datasets: [{
+                                label: metricKey,
+                                data: data,
+                                borderColor: metric.color,
+                                backgroundColor: metric.color + '33',
+                                fill: true,
+                                tension: 0.3,
+                                pointRadius: 5,
+                                pointHoverRadius: 8,
+                                pointBackgroundColor: metric.color,
+                                borderWidth: 2.5,
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    labels: { color: textColor, font: { family: 'Vazir', size: 13 } }
+                                },
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return context.dataset.label + ': ' + context.parsed.y.toFixed(1) +
+                                                ' ' + (metric.unit || '');
+                                        }
+                                    }
+                                }
+                            },
+                            scales: {
+                                x: {
+                                    ticks: { color: textColor, font: { family: 'Vazir' } },
+                                    grid: { color: gridColor },
+                                    title: { display: true, text: 'سال', color: textColor,
+                                    font: { family: 'Vazir' } }
+                                },
+                                y: {
+                                    ticks: { color: textColor, font: { family: 'Vazir' } },
+                                    grid: { color: gridColor },
+                                    title: { display: true, text: metric.unit || '', color: textColor,
+                                        font: { family: 'Vazir' } }
+                                }
+                            }
+                        }
+                    });
+                }
+
+                buildChart(activeMetric);
+
+                // Metric selector events
+                document.querySelectorAll('#metricSelector .btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        document.querySelectorAll('#metricSelector .btn').forEach(b => b.classList.remove(
+                        'active'));
+                        this.classList.add('active');
+                        const key = this.dataset.metric;
+                        activeMetric = key;
+                        if (analysisChart) {
+                            const metric = metrics[key];
+                            analysisChart.data.datasets[0].label = key;
+                            analysisChart.data.datasets[0].data = metric.data;
+                            analysisChart.data.datasets[0].borderColor = metric.color;
+                            analysisChart.data.datasets[0].backgroundColor = metric.color + '33';
+                            analysisChart.data.datasets[0].pointBackgroundColor = metric.color;
+                            analysisChart.options.scales.y.title.text = metric.unit || '';
+                            analysisChart.update();
+                        }
+                    });
+                });
+
+                // Resize handler
+                const resizeHandler = () => { if (analysisChart) analysisChart.resize(); };
+                window.addEventListener('resize', resizeHandler);
+                // store to remove if needed (optional)
+
+            }, 100);
+        }
+
+        // ================================================================
+        //  START
+        // ================================================================
+        function init() {
+            initData();
+            renderHome();
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        window.navigateTo = navigateTo;
+        window.toggleTheme = toggleTheme;
+
+        init();
+    </script>
+</body>
+</html>
