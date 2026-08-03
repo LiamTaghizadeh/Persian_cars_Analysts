@@ -594,6 +594,7 @@
         <!-- ===== VIEW: HOME ===== -->
         <div class="view active" id="viewHome">
             <div class="home-stats" id="homeStats"></div>
+            <div class="analysis-container" id="trendContainer" style="margin-bottom:32px;"></div>
             <div id="homeContent">
                 <div class="loader">
                     <div class="spinner"></div>
@@ -853,8 +854,9 @@
         let currentModel = '';
         let currentYear = '';
 
-        // Chart instance
+        // Chart instances
         let analysisChart = null;
+        let trendChart = null;
 
         // ================================================================
         //  DOM REFS
@@ -871,6 +873,7 @@
         const analysisTitle = $('analysisTitle');
         const analysisSub = $('analysisSub');
         const homeStats = $('homeStats');
+        const trendContainer = $('trendContainer');
         const btnBack = $('btnBack');
 
         // ================================================================
@@ -895,6 +898,16 @@
                 analysisChart.options.scales.x.grid.color = gridColor;
                 analysisChart.options.scales.y.grid.color = gridColor;
                 analysisChart.update();
+            }
+            if (trendChart) {
+                const isDark = next === 'dark';
+                const textColor = isDark ? '#f0f0f0' : '#1a1a1a';
+                const gridColor = isDark ? '#333' : '#e0e0e0';
+                trendChart.options.scales.x.ticks.color = textColor;
+                trendChart.options.scales.y.ticks.color = textColor;
+                trendChart.options.scales.x.grid.color = gridColor;
+                trendChart.options.scales.y.grid.color = gridColor;
+                trendChart.update();
             }
         }
 
@@ -1057,6 +1070,8 @@
                 <span class="stat-badge">⭐ <strong>${avgScore.toFixed(1)}</strong> میانگین امتیاز</span>
             `;
 
+            renderTrend();
+
             // group by manufacturer
             const sortedMfgs = Array.from(manufacturers).sort();
             let html = '';
@@ -1098,6 +1113,139 @@
             }
 
             homeContent.innerHTML = html;
+        }
+
+        // ================================================================
+        //  RENDER: YEAR-BY-YEAR TREND (HOME OVERVIEW CHART)
+        // ================================================================
+        // این چارت روند کلی صنعت خودروی ایران را به تفکیک سال نشان می‌دهد
+        // (میانگین گرفته‌شده از تمام مدل‌ها/تولیدکنندگان در هر سال).
+        let trendActiveMetric = null;
+
+        function renderTrend() {
+            // گروه‌بندی رکوردها بر اساس سال و محاسبه‌ی میانگین هر شاخص در آن سال
+            const years = Array.from(new Set(allCars.map(c => c.year))).sort((a, b) => a - b);
+
+            const avgByYear = (field) => years.map(y => {
+                const rows = allCars.filter(c => c.year === y);
+                return rows.reduce((s, c) => s + c[field], 0) / (rows.length || 1);
+            });
+            const countByYear = () => years.map(y => allCars.filter(c => c.year === y).length);
+
+            const trendMetrics = {
+                'میانگین امتیاز': { data: avgByYear('score'), unit: '/10', color: '#1abc9c' },
+                'میانگین قدرت (hp)': { data: avgByYear('power'), unit: 'hp', color: '#e74c3c' },
+                'میانگین گشتاور (Nm)': { data: avgByYear('torque'), unit: 'Nm', color: '#3498db' },
+                'میانگین مصرف سوخت (L/100km)': { data: avgByYear('consumption'), unit: 'L/100km', color: '#2ecc71' },
+                'میانگین CO₂ (g/km)': { data: avgByYear('co2'), unit: 'g/km', color: '#e67e22' },
+                'تعداد مدل‌های عرضه‌شده': { data: countByYear(), unit: 'مدل', color: '#9b59b6' },
+            };
+
+            const metricKeys = Object.keys(trendMetrics);
+            if (!trendActiveMetric || !trendMetrics[trendActiveMetric]) {
+                trendActiveMetric = metricKeys[0];
+            }
+
+            trendContainer.innerHTML = `
+                <div class="analysis-header">
+                    <div>
+                        <h2>📆 روند صنعت خودروی ایران به تفکیک سال</h2>
+                        <div class="sub">میانگین/مجموع تمام مدل‌ها در هر سال · ${years[0]} تا ${years[years.length-1]}</div>
+                    </div>
+                </div>
+                <div class="metric-selector" id="trendMetricSelector">
+                    ${metricKeys.map(key => `
+                        <button class="btn ${key === trendActiveMetric ? 'active' : ''}" data-metric="${key}">${key}</button>
+                    `).join('')}
+                </div>
+                <div class="chart-wrapper">
+                    <canvas id="trendChartCanvas"></canvas>
+                </div>
+            `;
+
+            const ctx = document.getElementById('trendChartCanvas').getContext('2d');
+            if (trendChart) { trendChart.destroy(); trendChart = null; }
+
+            const isDark = getTheme() === 'dark';
+            const textColor = isDark ? '#f0f0f0' : '#1a1a1a';
+            const gridColor = isDark ? '#333' : '#e0e0e0';
+
+            function buildTrendChart(metricKey) {
+                const metric = trendMetrics[metricKey];
+                const isScore = metric.unit === '/10';
+                const yScale = isScore
+                    ? { min: 0, max: 10 }
+                    : { beginAtZero: true, suggestedMax: Math.max(...metric.data) * 1.15 || 1 };
+
+                trendChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: years,
+                        datasets: [{
+                            label: metricKey,
+                            data: metric.data,
+                            backgroundColor: metric.color + 'aa',
+                            borderColor: metric.color,
+                            borderWidth: 1.5,
+                            borderRadius: 4,
+                            maxBarThickness: 34,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: { mode: 'index', intersect: false },
+                        plugins: {
+                            legend: {
+                                labels: { color: textColor, font: { family: 'Vazir', size: 13 } }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                titleFont: { family: 'Vazir' },
+                                bodyFont: { family: 'Vazir' },
+                                callbacks: {
+                                    title: function(items) { return 'سال ' + items[0].label; },
+                                    label: function(context) {
+                                        const val = context.parsed.y;
+                                        const formatted = Number.isInteger(val) ? val : val.toFixed(1);
+                                        return context.dataset.label + ': ' + formatted + ' ' + (metric.unit || '');
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: { color: textColor, font: { family: 'Vazir' } },
+                                grid: { display: false },
+                                title: { display: true, text: 'سال', color: textColor, font: { family: 'Vazir' } }
+                            },
+                            y: {
+                                ...yScale,
+                                ticks: {
+                                    color: textColor,
+                                    font: { family: 'Vazir' },
+                                    stepSize: isScore ? 1 : undefined,
+                                },
+                                grid: { color: gridColor },
+                                title: { display: true, text: metric.unit || '', color: textColor, font: { family: 'Vazir' } }
+                            }
+                        }
+                    }
+                });
+            }
+
+            buildTrendChart(trendActiveMetric);
+
+            document.querySelectorAll('#trendMetricSelector .btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('#trendMetricSelector .btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    trendActiveMetric = this.dataset.metric;
+                    if (trendChart) { trendChart.destroy(); trendChart = null; }
+                    buildTrendChart(trendActiveMetric);
+                });
+            });
         }
 
         // ================================================================
