@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="fa">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خودروهای ایرانی</title>
+
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css" rel="stylesheet" />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js">
+    </script>
+
+    <style>
+        /* ===== CSS Variables (Themes) ===== */
+        :root {
+            --bg-primary: #0d0d0d;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #242424;
+            --bg-hover: #2e2e2e;
+            --text-primary: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --text-muted: #707070;
+            --border-color: #333;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            --accent: #f39c12;
+            --accent-hover: #e67e22;
+            --radius: 16px;
+            --transition: 0.3s ease;
+            --font: 'Vazir', sans-serif;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-hover: #f0f0f0;
+            --text-primary: #1a1a1a;
+            --text-secondary: #444444;
+            --text-muted: #888888;
+            --border-color: #e0e0e0;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --accent: #e67e22;
+            --accent-hover: #d35400;
+        }
+
+        /* ===== Reset & Base ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color var(--transition), color var(--transition);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ===== Scrollbar ===== */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        /* ===== App Container ===== */
+        .app {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* ===== Header ===== */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 12px;
+            border: 1px solid var(--border-color);
+            transition: background var(--transition), border var(--transition);
+        }
+
+        .header-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .header-title small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 18px;
+            border: none;
+            border-radius: 30px;
+            font-family: var(--font);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn:hover {
+            background: var(--bg-hover);
+            transform: translateY(-1px);
+        }
+        .btn-accent {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+        .btn-accent:hover {
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
+        }
+        .btn-back {
+            background: transparent;
+            border-color: transparent;
+            padding: 8px 12px;
+        }
+        .btn-back:hover {
+            background: var(--bg-hover);
+        }
+
+        .theme-toggle {
+            font-size: 1.2rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition);
+            color: var(--text-primary);
+        }
+        .theme-toggle:hover {
+            background: var(--bg-hover);
+            transform: rotate(20deg);
+        }
+
+        /* ===== Views ===== */
+        .view {
+            display: none;
+            animation: fadeIn 0.35s ease;
+        }
+        .view.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== Home View ===== */
+        .home-stats {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .stat-badge {
+            background: var(--bg-secondary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: background var(--transition);
+        }
+        .stat-badge strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .manufacturer-group {
+            margin-bottom: 36px;
+        }
+        .manufacturer-group h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 16px;
+            padding-right: 4px;
+            border-right: 4px solid var(--accent);
+            padding-right: 12px;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 18px;
+        }
+
+        .car-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 18px 16px 20px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all var(--transition);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .car-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+            background: var(--bg-hover);
+        }
+        .car-card .car-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .car-card .car-img-placeholder {
+            width: 100%;
+            height: 120px;
+            border-radius: 10px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+        }
+        .car-card .car-name {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .car-card .car-manufacturer {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        .car-card .car-years {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+        .car-card .car-score {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 8px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* ===== Model Detail View ===== */
+        .detail-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .detail-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .detail-header h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .year-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .year-card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: all var(--transition);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .year-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent);
+        }
+        .year-card .year-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .year-card .year-img-placeholder {
+            width: 100%;
+            height: 160px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .year-card .year-body {
+            padding: 16px 18px 18px;
+        }
+        .year-card .year-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: #fff;
+            padding: 2px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .year-card .year-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 6px;
+        }
+        .year-card .year-specs span {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        .year-card .year-specs span:last-child {
+            border-bottom: none;
+        }
+        .year-card .year-specs .label {
+            color: var(--text-muted);
+        }
+        .year-card .year-specs .value {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* ===== Analysis View ===== */
+        .analysis-container {
+            background: var(--bg-secondary);
+            border-radius: var(--radius);
+            padding: 24px 28px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            transition: background var(--transition);
+        }
+        .analysis-container .analysis-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .analysis-container .analysis-header h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .analysis-container .analysis-header .sub {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 320px;
+            margin: 16px 0 20px;
+        }
+
+        .metric-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        .metric-selector .btn {
+            font-size: 0.78rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+        .metric-selector .btn.active {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+        }
+
+        .analysis-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+        .analysis-stats .stat-item {
+            text-align: center;
+        }
+        .analysis-stats .stat-item .num {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .analysis-stats .stat-item .lbl {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+            .header {
+                padding: 12px 16px;
+            }
+            .header-title {
+                font-size: 1.2rem;
+            }
+            .header-title small {
+                font-size: 0.7rem;
+            }
+            .car-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
+            }
+            .year-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            .analysis-container {
+                padding: 16px;
+            }
+            .chart-wrapper {
+                height: 240px;
+            }
+            .detail-header h1 {
+                font-size: 1.3rem;
+            }
+            .year-card .year-specs {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .analysis-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .year-grid {
+                grid-template-columns: 1fr;
+            }
+            .car-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .header-actions .btn span {
+                display: none;
+            }
+            .stat-badge {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+            }
+            .analysis-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ===== Loading ===== */
+        .loader {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        .loader .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-color);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-bottom: 16px;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ===== Utilities ===== */
+        .text-muted {
+            color: var(--text-muted);
+        }
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .flex-center {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .gap-4 {
+            gap: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app" id="app">
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <div class="header-title">
+                🚗 خودروهای ایرانی
+                <small>· داده‌کاوی ۱۳۸۰–۱۴۰۵</small>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-back" id="btnBack" style="display:none;" onclick="navigateTo('home')">
+                    ← بازگشت
+                </button>
+                <button class="theme-toggle" id="themeToggle" title="تغییر تم" onclick="toggleTheme()">
+                    🌙
+                </button>
+            </div>
+        </header>
+
+        <!-- ===== VIEW: HOME ===== -->
+        <div class="view active" id="viewHome">
+            <div class="home-stats" id="homeStats"></div>
+            <div id="homeContent">
+                <div class="loader">
+                    <div class="spinner"></div>
+                    <p>در حال بارگذاری داده‌ها ...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== VIEW: MODEL DETAIL ===== -->
+        <div class="view" id="viewDetail">
+            <div class="detail-header">
+                <h1 id="detailTitle">مدل <small id="detailSub"></small></h1>
+            </div>
+            <div id="detailContent">
+                <div class="loader">
+                    <div class="spinner"></div>
+                    <p>در حال بارگذاری ...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== VIEW: ANALYSIS ===== -->
+        <div class="view" id="viewAnalysis">
+            <div class="detail-header">
+                <h1 id="analysisTitle">تحلیل <small id="analysisSub"></small></h1>
+            </div>
+            <div class="analysis-container" id="analysisContent">
+                <div class="loader">
+                    <div class="spinner"></div>
+                    <p>در حال بارگذاری تحلیل ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================================================================
+        //  DATA
+        // ================================================================
+        // داده‌ها به صورت مستقیم در فایل جای‌گذاری شده‌اند تا برنامه بدون نیاز به اینترنت یا سرور کار کند
+        const CSV_DATA = `Year,Shamsi_Year,Manufacturer,Model,Fuel_Type,Engine_Type,Power_hp,Torque_Nm,Fuel_Consumption_L100km,Acceleration_0_100_s,Top_Speed_kmh,CO2_Emission_g_km,Emission_Standard,Score,Key_Options,Image_URL
+2001,1380,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2001,1380,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2001,1380,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 2,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2001,1380,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2002,1381,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2002,1381,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2002,1381,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 2,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2002,1381,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2003,1382,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2003,1382,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2003,1382,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 2,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2003,1382,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2004,1383,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2004,1383,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2004,1383,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 2,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2004,1383,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2005,1384,Iran Khodro,Paykan,Petrol,"1.6L I4, 8-valve",67,110,9.5,16.0,145,210,Euro 2,3.0,"Basic, Manual Transmission",N/A
+2005,1384,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 2,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2005,1384,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2005,1384,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2005,1384,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2006,1385,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2006,1385,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2006,1385,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2006,1385,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2007,1386,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2007,1386,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2007,1386,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2007,1386,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2007,1386,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2008,1387,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2008,1387,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2008,1387,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2008,1387,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2008,1387,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2008,1387,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2009,1388,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2009,1388,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2009,1388,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2009,1388,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2009,1388,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2009,1388,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2009,1388,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2010,1389,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2010,1389,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2010,1389,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2010,1389,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2010,1389,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2010,1389,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2010,1389,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2011,1390,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2011,1390,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2011,1390,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2011,1390,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2011,1390,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2011,1390,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2011,1390,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2011,1390,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2012,1391,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2012,1391,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2012,1391,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2012,1391,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2012,1391,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2012,1391,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2012,1391,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2012,1391,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2013,1392,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2013,1392,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2013,1392,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2013,1392,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2013,1392,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2013,1392,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2013,1392,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2013,1392,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2014,1393,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2014,1393,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2014,1393,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2014,1393,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2014,1393,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2014,1393,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2014,1393,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2014,1393,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2014,1393,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2015,1394,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2015,1394,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2015,1394,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2015,1394,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2015,1394,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2015,1394,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2015,1394,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2015,1394,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2015,1394,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2015,1394,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2016,1395,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2016,1395,Iran Khodro,Dena,Petrol,"1.7L I4, Turbo",113,155,7.5,11.0,205,180,Euro 4,8.0,"6-Speed Manual, ABS, EBD, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2016,1395,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2016,1395,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2016,1395,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2016,1395,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2016,1395,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2016,1395,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2016,1395,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2016,1395,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2017,1396,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2017,1396,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2017,1396,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2017,1396,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2017,1396,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2017,1396,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2017,1396,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2017,1396,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2017,1396,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2017,1396,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2017,1396,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2018,1397,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2018,1397,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2018,1397,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2018,1397,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2018,1397,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2018,1397,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2018,1397,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2018,1397,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2018,1397,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2018,1397,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2018,1397,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2019,1398,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2019,1398,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2019,1398,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2019,1398,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2019,1398,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2019,1398,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2019,1398,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2019,1398,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2019,1398,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2019,1398,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2019,1398,Saipa,Shahin,Petrol,1.5L Turbo,110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2019,1398,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2020,1399,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2020,1399,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2020,1399,Iran Khodro,Peugeot 206,Petrol,"1.4L I4, 8-valve",75,118,7.0,13.5,175,175,Euro 3,7.0,"ABS, EBD, Power Steering",https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Peugeot_206_%28facelift%29_%28Front%29.jpg/1280px-Peugeot_206_%28facelift%29_%28Front%29.jpg
+2020,1399,Iran Khodro,Peugeot Pars,Petrol,"1.8L I4, 8-valve",109,153,7.8,14.2,190,185,Euro 3,7.5,"Airbags, ABS, EBD",https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Peugeot_Pars_%28Iran%29.jpg/1280px-Peugeot_Pars_%28Iran%29.jpg
+2020,1399,Iran Khodro,Runna,Petrol / CNG,"1.6L I4, 16-valve",105,142,7.2,11.5,180,178,Euro 4,7.0,"ABS, EBD, Power Steering",N/A
+2020,1399,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2020,1399,Iran Khodro,Soren,Petrol / CNG,"1.6L I4, 16-valve",110,153,7.3,10.0,185,180,Euro 3,7.0,"ESP (optional), Airbag, ABS",N/A
+2020,1399,Iran Khodro,Tara,Petrol,1.6L I4 (TU5P),113,144,6.6,9.2,210,155,Euro 5,8.5,"6-Speed AT, Dual VVTI, ESC, Airbags",N/A
+2020,1399,Saipa,Pride,Petrol,"1.3L I4, 8-valve",63,103,6.8,14.5,170,165,Euro 2,4.5,"Basic, Manual Transmission",N/A
+2020,1399,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2020,1399,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2020,1399,Saipa,Shahin,Petrol,1.5L Turbo,110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2020,1399,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2020,1399,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2021,1400,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2021,1400,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2021,1400,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2021,1400,Iran Khodro,Tara,Petrol,1.6L I4 (TU5P),113,144,6.6,9.2,210,155,Euro 5,8.5,"6-Speed AT, Dual VVTI, ESC, Airbags",N/A
+2021,1400,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2021,1400,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2021,1400,Saipa,Shahin,Petrol,1.5L Turbo,110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2021,1400,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2021,1400,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2022,1401,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2022,1401,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2022,1401,Iran Khodro,Samand,Petrol / CNG,"1.8L I4, 8-valve",100,153,8.5,11.9,185,190,Euro 3,6.5,"ABS, Power Steering, Airbag (optional)",https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Iran_Khodro_Samand_02.jpg/1280px-Iran_Khodro_Samand_02.jpg
+2022,1401,Iran Khodro,Tara,Petrol,1.6L I4 (TU5P),113,144,6.6,9.2,210,155,Euro 5,8.5,"6-Speed AT, Dual VVTI, ESC, Airbags",N/A
+2022,1401,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2022,1401,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2022,1401,Saipa,Shahin,Petrol,1.5L Turbo,110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2022,1401,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2022,1401,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2023,1402,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2023,1402,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2023,1402,Iran Khodro,Tara (Turbo),Petrol,1.65L Turbo,160,240,6.5,8.5,215,150,Euro 5,9.0,"6-Speed AT, Dual VVTI, ESC, 6 Airbags",N/A
+2023,1402,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2023,1402,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2023,1402,Saipa,Shahin,Petrol,1.5L Turbo,110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2023,1402,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2023,1402,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2024,1403,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2024,1403,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2024,1403,Iran Khodro,Rira,Petrol / Hybrid,1.7L Turbo + Electric,292,340,5.5,8.5,220,130,Euro 6,9.5,"6-Speed AT, Plug-in Hybrid, ESC, 6 Airbags",N/A
+2024,1403,Iran Khodro,Tara (Turbo),Petrol,1.65L Turbo,160,240,6.5,8.5,215,150,Euro 5,9.0,"6-Speed AT, Dual VVTI, ESC, 6 Airbags",N/A
+2024,1403,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2024,1403,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2024,1403,Saipa,Shahin,Petrol,1.5L Turbo,110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2024,1403,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2024,1403,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2025,1404,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2025,1404,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2025,1404,Iran Khodro,Rira,Petrol / Hybrid,1.7L Turbo + Electric,292,340,5.5,8.5,220,130,Euro 6,9.5,"6-Speed AT, Plug-in Hybrid, ESC, 6 Airbags",N/A
+2025,1404,Iran Khodro,Tara (Turbo),Petrol,1.65L Turbo,160,240,6.5,8.5,215,150,Euro 5,9.0,"6-Speed AT, Dual VVTI, ESC, 6 Airbags",N/A
+2025,1404,Saipa,Ariya,Petrol / Hybrid,"2.0L I4, 16-valve",150,204,6.5,9.0,190,155,Euro 6,8.5,"Tip-Tronic, Hybrid Option, ESC, Airbags",N/A
+2025,1404,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2025,1404,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2025,1404,Saipa,Shahin,Petrol,1.5L Turbo,110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2025,1404,Saipa,Tiba,Petrol,"1.5L I4, 8-valve",87,128,6.5,13.0,175,160,Euro 4,6.0,"ABS, EBD, Power Steering",N/A
+2025,1404,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+2026,1405,Iran Khodro,Arisun,Petrol / CNG,"1.7L I4, 8-valve",101,146,8.0,12.5,170,185,Euro 4,6.0,"Basic, Manual Transmission",N/A
+2026,1405,Iran Khodro,Dena (Turbo),Petrol,"1.7L I4, Turbo",150,215,7.0,9.5,210,170,Euro 4,8.5,"6-Speed AT/MT, ESP, ABS, Airbag",https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg/1280px-Iran_Khodro_Dena_%2B_%28IKCO%29_%E2%80%93_front_quarter_view.jpg
+2026,1405,Iran Khodro,Rira,Petrol / Hybrid,1.7L Turbo + Electric,292,340,5.5,8.5,220,130,Euro 6,9.5,"6-Speed AT, Plug-in Hybrid, ESC, 6 Airbags",N/A
+2026,1405,Iran Khodro,Tara (Turbo),Petrol,1.65L Turbo,160,240,6.5,8.5,215,150,Euro 5,9.0,"6-Speed AT, Dual VVTI, ESC, 6 Airbags",N/A
+2026,1405,Saipa,Ariya,Petrol / Hybrid,"2.0L I4, 16-valve",150,204,6.5,9.0,190,155,Euro 6,8.5,"Tip-Tronic, Hybrid Option, ESC, Airbags",N/A
+2026,1405,Saipa,Quik,Petrol,"1.5L I4, 16-valve",87,128,6.9,13.0,160,160,Euro 4,6.5,"5-Speed Manual / CVT, ABS, EBD",N/A
+2026,1405,Saipa,Saina,Petrol,"1.5L I4, 8-valve",87,128,7.4,13.6,175,165,Euro 4,6.5,"Euro 5, CVT (optional), ABS, EBD",N/A
+2026,1405,Saipa,Shahin,Petrol,1.5L Turbo,110,178,6.8,11.0,185,160,Euro 5,7.5,"CVT / 6-Speed Automatic, ABS, ESC",N/A
+2026,1405,Zamyad,Padra Plus,Petrol,"2.4L I4, 8-valve",94,187,10.9,14.0,90,210,Euro 4,4.0,"5-Speed Manual, 2WD",N/A
+`;
+
+        let allCars = []; // [{ year, shamsi, manufacturer, model, fuel, engine, power, torque, consumption, accel, topSpeed, co2, standard, score, options, image }]
+        let modelsMap = {}; // { modelName: [index, ...] }
+        let manufacturers = new Set();
+
+        // ================================================================
+        //  STATE
+        // ================================================================
+        let currentView = 'home';
+        let currentModel = '';
+        let currentYear = '';
+
+        // Chart instance
+        let analysisChart = null;
+
+        // ================================================================
+        //  DOM REFS
+        // ================================================================
+        const $ = id => document.getElementById(id);
+        const viewHome = $('viewHome');
+        const viewDetail = $('viewDetail');
+        const viewAnalysis = $('viewAnalysis');
+        const homeContent = $('homeContent');
+        const detailContent = $('detailContent');
+        const analysisContent = $('analysisContent');
+        const detailTitle = $('detailTitle');
+        const detailSub = $('detailSub');
+        const analysisTitle = $('analysisTitle');
+        const analysisSub = $('analysisSub');
+        const homeStats = $('homeStats');
+        const btnBack = $('btnBack');
+
+        // ================================================================
+        //  THEME
+        // ================================================================
+        function getTheme() {
+            return document.documentElement.getAttribute('data-theme') || 'dark';
+        }
+
+        function toggleTheme() {
+            const current = getTheme();
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            document.getElementById('themeToggle').textContent = next === 'dark' ? '🌙' : '☀️';
+            // re-render charts if needed
+            if (analysisChart) {
+                const isDark = next === 'dark';
+                const textColor = isDark ? '#f0f0f0' : '#1a1a1a';
+                const gridColor = isDark ? '#333' : '#e0e0e0';
+                analysisChart.options.scales.x.ticks.color = textColor;
+                analysisChart.options.scales.y.ticks.color = textColor;
+                analysisChart.options.scales.x.grid.color = gridColor;
+                analysisChart.options.scales.y.grid.color = gridColor;
+                analysisChart.update();
+            }
+        }
+
+        // ================================================================
+        //  NAVIGATION
+        // ================================================================
+        function showView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            const el = $(viewId);
+            if (el) el.classList.add('active');
+            currentView = viewId;
+            btnBack.style.display = (viewId === 'home') ? 'none' : 'inline-flex';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function navigateTo(view, data) {
+            if (view === 'home') {
+                showView('viewHome');
+                renderHome();
+            } else if (view === 'detail') {
+                currentModel = data;
+                showView('viewDetail');
+                renderDetail(currentModel);
+            } else if (view === 'analysis') {
+                currentModel = data.model;
+                currentYear = data.year;
+                showView('viewAnalysis');
+                renderAnalysis(currentModel, currentYear);
+            }
+        }
+
+        // ================================================================
+        //  CSV PARSER (RFC4180-aware — respects quoted fields containing commas)
+        // ================================================================
+        // نکته مهم: پارس‌کننده قبلی برنامه فقط با split(',') کار می‌کرد و چون
+        // ستون‌هایی مثل Engine_Type و Key_Options مقادیر کوما-دار داخل کوتیشن
+        // دارند (مثلاً "1.6L I4, 8-valve")، تمام ستون‌های بعدی (به‌خصوص قدرت
+        // موتور و امتیاز) به اشتباه جابه‌جا خوانده می‌شدند. این نسخه هر خط را
+        // با در نظر گرفتن کوتیشن‌ها به‌درستی می‌شکافد.
+        function parseCSVLine(line) {
+            const result = [];
+            let cur = '';
+            let inQuotes = false;
+            for (let i = 0; i < line.length; i++) {
+                const ch = line[i];
+                if (inQuotes) {
+                    if (ch === '"') {
+                        if (line[i + 1] === '"') { cur += '"'; i++; }
+                        else { inQuotes = false; }
+                    } else {
+                        cur += ch;
+                    }
+                } else {
+                    if (ch === '"') {
+                        inQuotes = true;
+                    } else if (ch === ',') {
+                        result.push(cur);
+                        cur = '';
+                    } else {
+                        cur += ch;
+                    }
+                }
+            }
+            result.push(cur);
+            return result.map(s => s.trim());
+        }
+
+        // ================================================================
+        //  LOAD & PARSE CSV
+        // ================================================================
+        async function loadData() {
+            try {
+                const text = CSV_DATA;
+                const lines = text.split('\n').map(l => l.replace(/\r$/, '')).filter(line => line.trim());
+                if (lines.length < 2) throw new Error('CSV خالی است');
+
+                const headers = parseCSVLine(lines[0]);
+                // find column indices
+                const idx = {
+                    year: headers.indexOf('Year'),
+                    shamsi: headers.indexOf('Shamsi_Year'),
+                    manufacturer: headers.indexOf('Manufacturer'),
+                    model: headers.indexOf('Model'),
+                    fuel: headers.indexOf('Fuel_Type'),
+                    engine: headers.indexOf('Engine_Type'),
+                    power: headers.indexOf('Power_hp'),
+                    torque: headers.indexOf('Torque_Nm'),
+                    consumption: headers.indexOf('Fuel_Consumption_L100km'),
+                    accel: headers.indexOf('Acceleration_0_100_s'),
+                    topSpeed: headers.indexOf('Top_Speed_kmh'),
+                    co2: headers.indexOf('CO2_Emission_g_km'),
+                    standard: headers.indexOf('Emission_Standard'),
+                    score: headers.indexOf('Score'),
+                    options: headers.indexOf('Key_Options'),
+                    image: headers.indexOf('Image_URL'),
+                };
+
+                for (let i = 1; i < lines.length; i++) {
+                    const cols = parseCSVLine(lines[i]);
+                    if (cols.length < headers.length) continue;
+                    const car = {
+                        year: parseInt(cols[idx.year], 10) || 0,
+                        shamsi: cols[idx.shamsi] || '',
+                        manufacturer: cols[idx.manufacturer] || '',
+                        model: cols[idx.model] || '',
+                        fuel: cols[idx.fuel] || '',
+                        engine: cols[idx.engine] || '',
+                        power: parseFloat(cols[idx.power]) || 0,
+                        torque: parseFloat(cols[idx.torque]) || 0,
+                        consumption: parseFloat(cols[idx.consumption]) || 0,
+                        accel: parseFloat(cols[idx.accel]) || 0,
+                        topSpeed: parseFloat(cols[idx.topSpeed]) || 0,
+                        co2: parseFloat(cols[idx.co2]) || 0,
+                        standard: cols[idx.standard] || '',
+                        score: parseFloat(cols[idx.score]) || 0,
+                        options: cols[idx.options] || '',
+                        image: cols[idx.image] || 'N/A',
+                    };
+                    // skip invalid
+                    if (!car.model || !car.manufacturer) continue;
+                    allCars.push(car);
+                    manufacturers.add(car.manufacturer);
+                }
+
+                // build models map
+                modelsMap = {};
+                allCars.forEach((car, index) => {
+                    const key = car.model;
+                    if (!modelsMap[key]) modelsMap[key] = [];
+                    modelsMap[key].push(index);
+                });
+
+                return true;
+            } catch (err) {
+                console.error('Error loading data:', err);
+                homeContent.innerHTML =
+                    `<div class="loader" style="color:var(--text-secondary);"><p>⚠️ خطا در بارگذاری داده‌ها</p><p style="font-size:0.85rem;">${err.message}</p></div>`;
+                return false;
+            }
+        }
+
+        // ================================================================
+        //  RENDER: HOME
+        // ================================================================
+        function renderHome() {
+            if (!allCars.length) {
+                homeContent.innerHTML = `<div class="loader"><p>⏳ در حال بارگذاری ...</p></div>`;
+                return;
+            }
+
+            // stats
+            const totalModels = Object.keys(modelsMap).length;
+            const totalRecords = allCars.length;
+            const avgScore = allCars.reduce((sum, c) => sum + c.score, 0) / (allCars.length || 1);
+            homeStats.innerHTML = `
+                <span class="stat-badge">🚗 <strong>${totalModels}</strong> مدل</span>
+                <span class="stat-badge">📊 <strong>${totalRecords}</strong> رکورد</span>
+                <span class="stat-badge">🏭 <strong>${manufacturers.size}</strong> تولیدکننده</span>
+                <span class="stat-badge">📅 <strong>${Math.min(...allCars.map(c=>c.year))} – ${Math.max(...allCars.map(c=>c.year))}</strong></span>
+                <span class="stat-badge">⭐ <strong>${avgScore.toFixed(1)}</strong> میانگین امتیاز</span>
+            `;
+
+            // group by manufacturer
+            const sortedMfgs = Array.from(manufacturers).sort();
+            let html = '';
+            for (const mfg of sortedMfgs) {
+                const models = Object.keys(modelsMap)
+                    .filter(name => allCars[modelsMap[name][0]].manufacturer === mfg)
+                    .sort();
+
+                if (!models.length) continue;
+
+                html += `<div class="manufacturer-group">
+                            <h2>${mfg}</h2>
+                            <div class="car-grid">`;
+
+                for (const model of models) {
+                    const indices = modelsMap[model];
+                    const carsOfModel = indices.map(i => allCars[i]).sort((a, b) => a.year - b.year);
+                    const first = carsOfModel[0];
+                    const latest = carsOfModel[carsOfModel.length - 1];
+                    const years = carsOfModel.map(c => c.year);
+                    const yearRange = years.length === 1 ? `${years[0]}` : `${years[0]} – ${years[years.length-1]}`;
+                    const img = first.image && first.image !== 'N/A' ? first.image : null;
+                    // امتیاز نمایش داده‌شده روی کارت = امتیاز آخرین سال موجود برای این مدل
+                    const latestScore = latest.score;
+
+                    html += `
+                            <div class="car-card" onclick="navigateTo('detail','${model.replace(/'/g,"\\'")}')">
+                                ${img ? `<img class="car-img" src="${img}" alt="${model}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
+                                <div class="car-img-placeholder" style="${img ? 'display:none;' : ''}">🚗</div>
+                                <div class="car-name">${model}</div>
+                                <div class="car-manufacturer">${mfg}</div>
+                                <div class="car-years">${yearRange} · ${years.length} سال</div>
+                                <div class="car-score">⭐ ${latestScore.toFixed(1)}/10</div>
+                            </div>
+                        `;
+                }
+
+                html += `</div></div>`;
+            }
+
+            homeContent.innerHTML = html;
+        }
+
+        // ================================================================
+        //  RENDER: MODEL DETAIL
+        // ================================================================
+        function renderDetail(modelName) {
+            const indices = modelsMap[modelName];
+            if (!indices || !indices.length) {
+                detailContent.innerHTML = `<div class="loader"><p>❌ مدل یافت نشد</p></div>`;
+                return;
+            }
+
+            const cars = indices.map(i => allCars[i]).sort((a, b) => a.year - b.year);
+            const mfg = cars[0].manufacturer;
+            detailTitle.textContent = modelName;
+            detailSub.textContent = `· ${mfg} · ${cars.length} سال`;
+
+            let html = `<div class="year-grid">`;
+            for (const car of cars) {
+                const img = car.image && car.image !== 'N/A' ? car.image : null;
+                html += `
+                        <div class="year-card" onclick="navigateTo('analysis',{model:'${modelName.replace(/'/g,"\\'")}',year:${car.year}})">
+                            ${img ? `<img class="year-img" src="${img}" alt="${modelName} ${car.year}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
+                            <div class="year-img-placeholder" style="${img ? 'display:none;' : ''}">🚗</div>
+                            <div class="year-body">
+                                <div class="year-badge">${car.year} · ${car.shamsi}</div>
+                                <div class="year-specs">
+                                    <span><span class="label">قدرت</span><span class="value">${car.power} hp</span></span>
+                                    <span><span class="label">گشتاور</span><span class="value">${car.torque} Nm</span></span>
+                                    <span><span class="label">مصرف سوخت</span><span class="value">${car.consumption} L/100km</span></span>
+                                    <span><span class="label">شتاب ۰–۱۰۰</span><span class="value">${car.accel} s</span></span>
+                                    <span><span class="label">حداکثر سرعت</span><span class="value">${car.topSpeed} km/h</span></span>
+                                    <span><span class="label">CO₂</span><span class="value">${car.co2} g/km</span></span>
+                                    <span><span class="label">استاندارد</span><span class="value">${car.standard}</span></span>
+                                    <span><span class="label">امتیاز</span><span class="value">${car.score}/10</span></span>
+                                </div>
+                                ${car.options && car.options !== 'N/A' ? `<div style="margin-top:8px;font-size:0.75rem;color:var(--text-muted);">⚙️ ${car.options}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+            }
+            html += `</div>`;
+            detailContent.innerHTML = html;
+        }
+
+        // ================================================================
+        //  RENDER: ANALYSIS
+        // ================================================================
+        function renderAnalysis(modelName, year) {
+            const indices = modelsMap[modelName];
+            if (!indices || !indices.length) {
+                analysisContent.innerHTML = `<div class="loader"><p>❌ داده‌ای برای تحلیل وجود ندارد</p></div>`;
+                return;
+            }
+
+            const cars = indices.map(i => allCars[i]).sort((a, b) => a.year - b.year);
+            const selected = cars.find(c => c.year === year);
+            if (!selected) {
+                analysisContent.innerHTML = `<div class="loader"><p>❌ سال ${year} یافت نشد</p></div>`;
+                return;
+            }
+
+            analysisTitle.textContent = modelName;
+            analysisSub.textContent = `· ${selected.manufacturer} · ${year} (${selected.shamsi})`;
+
+            // Prepare chart data
+            const years = cars.map(c => c.year);
+            const powerData = cars.map(c => c.power);
+            const torqueData = cars.map(c => c.torque);
+            const consumptionData = cars.map(c => c.consumption);
+            const accelData = cars.map(c => c.accel);
+            const topSpeedData = cars.map(c => c.topSpeed);
+            const co2Data = cars.map(c => c.co2);
+            const scoreData = cars.map(c => c.score);
+
+            const metrics = {
+                'قدرت (hp)': { data: powerData, unit: 'hp', color: '#e74c3c' },
+                'گشتاور (Nm)': { data: torqueData, unit: 'Nm', color: '#3498db' },
+                'مصرف سوخت (L/100km)': { data: consumptionData, unit: 'L/100km', color: '#2ecc71' },
+                'شتاب ۰–۱۰۰ (s)': { data: accelData, unit: 's', color: '#f39c12' },
+                'حداکثر سرعت (km/h)': { data: topSpeedData, unit: 'km/h', color: '#9b59b6' },
+                'CO₂ (g/km)': { data: co2Data, unit: 'g/km', color: '#e67e22' },
+                'امتیاز (/۱۰)': { data: scoreData, unit: '/10', color: '#1abc9c' },
+            };
+
+            const metricKeys = Object.keys(metrics);
+            let activeMetric = metricKeys[0];
+
+            // Build UI
+            let html = `
+                    <div class="analysis-header">
+                        <div>
+                            <h2>📈 تحلیل عملکرد</h2>
+                            <div class="sub">${modelName} · ${cars.length} سال داده</div>
+                        </div>
+                    </div>
+                    <div class="metric-selector" id="metricSelector">
+                        ${metricKeys.map(key => `
+                            <button class="btn ${key === activeMetric ? 'active' : ''}" data-metric="${key}">${key}</button>
+                        `).join('')}
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="analysisChart"></canvas>
+                    </div>
+                    <div class="analysis-stats" id="analysisStats">
+                        ${Object.entries(metrics).map(([key, val]) => {
+                            const data = val.data;
+                            const last = data[data.length-1] || 0;
+                            const max = Math.max(...data) || 0;
+                            const min = Math.min(...data) || 0;
+                            const avg = (data.reduce((a,b)=>a+b,0) / data.length) || 0;
+                            return `
+                                <div class="stat-item">
+                                    <div class="num">${last.toFixed(1)}</div>
+                                    <div class="lbl">${key} (آخرین)</div>
+                                    <div style="font-size:0.7rem;color:var(--text-muted);">حداکثر ${max.toFixed(1)} · میانگین ${avg.toFixed(1)}</div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                `;
+
+            analysisContent.innerHTML = html;
+
+            // --- Chart ---
+            const ctx = document.getElementById('analysisChart').getContext('2d');
+
+            // destroy old chart
+            if (analysisChart) {
+                analysisChart.destroy();
+                analysisChart = null;
+            }
+
+            const isDark = getTheme() === 'dark';
+            const textColor = isDark ? '#f0f0f0' : '#1a1a1a';
+            const gridColor = isDark ? '#333' : '#e0e0e0';
+
+            function buildChart(metricKey) {
+                const metric = metrics[metricKey];
+                const data = metric.data;
+                const isScore = metric.unit === '/10';
+                const yScale = isScore
+                    ? { min: 0, max: 10 }
+                    : { beginAtZero: true, suggestedMax: Math.max(...data) * 1.15 || 1 };
+
+                analysisChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: years,
+                        datasets: [{
+                            label: metricKey,
+                            data: data,
+                            borderColor: metric.color,
+                            backgroundColor: metric.color + '33',
+                            fill: true,
+                            tension: 0.3,
+                            pointRadius: 5,
+                            pointHoverRadius: 8,
+                            pointBackgroundColor: metric.color,
+                            pointBorderColor: isDark ? '#0d0d0d' : '#ffffff',
+                            pointBorderWidth: 2,
+                            borderWidth: 2.5,
+                            spanGaps: true,
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        interaction: { mode: 'index', intersect: false },
+                        plugins: {
+                            legend: {
+                                labels: { color: textColor, font: { family: 'Vazir', size: 13 } }
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false,
+                                titleFont: { family: 'Vazir' },
+                                bodyFont: { family: 'Vazir' },
+                                callbacks: {
+                                    title: function(items) {
+                                        return 'سال ' + items[0].label;
+                                    },
+                                    label: function(context) {
+                                        const val = context.parsed.y;
+                                        const formatted = Number.isInteger(val) ? val : val.toFixed(1);
+                                        return context.dataset.label + ': ' + formatted + ' ' + (metric.unit || '');
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: { color: textColor, font: { family: 'Vazir' } },
+                                grid: { color: gridColor },
+                                title: { display: true, text: 'سال', color: textColor, font: { family: 'Vazir' } }
+                            },
+                            y: {
+                                ...yScale,
+                                ticks: {
+                                    color: textColor,
+                                    font: { family: 'Vazir' },
+                                    stepSize: isScore ? 1 : undefined,
+                                },
+                                grid: { color: gridColor },
+                                title: { display: true, text: metric.unit || '', color: textColor,
+                                font: { family: 'Vazir' } }
+                            }
+                        }
+                    }
+                });
+            }
+
+            buildChart(activeMetric);
+
+            // --- Metric selector events ---
+            document.querySelectorAll('#metricSelector .btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('#metricSelector .btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const key = this.dataset.metric;
+                    activeMetric = key;
+                    if (analysisChart) {
+                        const metric = metrics[key];
+                        const isScore = metric.unit === '/10';
+                        analysisChart.data.datasets[0].label = key;
+                        analysisChart.data.datasets[0].data = metric.data;
+                        analysisChart.data.datasets[0].borderColor = metric.color;
+                        analysisChart.data.datasets[0].backgroundColor = metric.color + '33';
+                        analysisChart.data.datasets[0].pointBackgroundColor = metric.color;
+                        analysisChart.options.scales.y.title.text = metric.unit || '';
+                        // بازتنظیم دقیق محور Y متناسب با شاخص جدید
+                        if (isScore) {
+                            analysisChart.options.scales.y.min = 0;
+                            analysisChart.options.scales.y.max = 10;
+                            analysisChart.options.scales.y.beginAtZero = undefined;
+                            analysisChart.options.scales.y.suggestedMax = undefined;
+                            analysisChart.options.scales.y.ticks.stepSize = 1;
+                        } else {
+                            analysisChart.options.scales.y.min = undefined;
+                            analysisChart.options.scales.y.max = undefined;
+                            analysisChart.options.scales.y.beginAtZero = true;
+                            analysisChart.options.scales.y.suggestedMax = Math.max(...metric.data) * 1.15 || 1;
+                            analysisChart.options.scales.y.ticks.stepSize = undefined;
+                        }
+                        analysisChart.update();
+                    }
+                });
+            });
+        }
+
+        // ================================================================
+        //  INIT
+        // ================================================================
+        async function init() {
+            const ok = await loadData();
+            if (ok) {
+                renderHome();
+            }
+            // set initial theme
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        // expose to global for inline onclick
+        window.navigateTo = navigateTo;
+        window.toggleTheme = toggleTheme;
+
+        // start
+        init();
+    </script>
+
+</body>
+</html>
