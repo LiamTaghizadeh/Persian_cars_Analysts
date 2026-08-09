@@ -134,38 +134,6 @@ Contributions are welcome! Please see the main repository guidelines for contrib
 5. Open a Pull Request
 
 ---
-
-## 📄 License
-
-This project is licensed under the MIT License — see the [LICENSE](https://github.com/LiamTaghizadeh/Persian_cars_Analysts/blob/main/LICENSE) file for details (if available).
-
----
-
-## 👤 Author
-
-**Liam Taghizadeh** — [GitHub Profile](https://github.com/LiamTaghizadeh)
-
----
-
-## 🙏 Acknowledgments
-
-- All data contributors and scrapers from Phases 1 and 2
-- The Iranian automotive community for public data availability
-- Open-source charting libraries that power the visualizations
-
----
-
-## 📞 Contact
-
-For questions, suggestions, or collaboration inquiries, please open an issue on the repository or reach out via GitHub.
-
----
-
-**Persian Cars Analysts** — *Making Iranian automotive data accessible, visual, and actionable.*
-```
-
----
-
 ## 📝 Summary of What We're Doing
 
 **Phase 3** of the Persian Cars Analysts project is the **visualization and interaction layer** of a larger data pipeline. Here's what we're accomplishing:
